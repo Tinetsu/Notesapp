@@ -1,0 +1,110 @@
+Note taking app PRD
+
+Definitions 
+Px - This is the priority of items based on the following scale. 
+P0 - Must have for MVP 
+P1 - Extended feature, would be nice to have at 1.0 release but if too complex it will be to be added after 1.0 release. These items should be considered when building the program so that they can be added at a later time without a complete restructure. 
+P2 - visual improvements that should only be considered if very easily implemented but not a requirement. This can include splash screens, graphical enhancements to the look of the program, buttons, drop downs, etc. 
+Page Format - this is how the program's UI will look to the end user.
+Area - This defines a space within the program where items can be added.  
+Item - Is high level container that is ONE header, Main note, Sub note, Subsub note, or context. 
+Text - anything that can be typed by the user. 
+Editable - Allows a user to type but may have predefined rules on what can be typed or formatted. 
+Fully Editable - Allows a user to type or add media and gives full control to define formatting including including Header, main note, sub notes, etc. 
+Context - This is text that is written but does not fall into a category such as Header, Main Note, sub note, etc. 
+Header - text that is at least twice the size of standard text used throughout the page and can not be nested under any other text. Headers can only be created if it is the last text in the lower area.
+Body - this the entire area below Action items. 
+Tree - this is all text, including parents and childs that are nested under a header, and ends when another header is created. 
+Main Note - This is a numbering list, bullet points list, or check box list.
+Sub Note - These are sub-bullet points, sub-numbering list and check boxes that are nested under a main note. These should adhere to standard practices such as using a Square icon vs a bullet point, or letters versus numbers. 
+Subsub Note - This is a sub note to the sub note. 
+Parent or Owner - This is any text that has something nested under them. So all headers are parents, all context can be parents, all main notes can be parents, and sub notes can be parents.
+Nested or Child - this is text that is indented under another item. A parent can have many nested/child. 
+Toolbar 
+Toolbar shall provide the standard functions available in most word processors only in relation to formatting of text as defined below with a special focus of google docs compatibility.
+Font Size (H1, H2, H3, etc) - P0
+Bold - P0
+Underline - P0
+Italics - P0
+Bullet points - P0
+Sub bullet point - P0
+Numbering list - P0
+Sub numbering list - P0
+Checkbox - P1
+Highlight text - P1
+Font Color - P1
+Links - P1
+Horizontal alignment - P1
+Copy button - a button that will copy context to clipboard in a specific format. 
+Copy or the copy - this is all the text and formatting that is copied to the clipboard.
+Title - Single line text entry at the top of the program. 
+Open Questions - This is the area of the body that is only applicable in the copy function. 
+Action items - this part of the body that is only applicable in the copy function. 
+Body - this is the area below the tool bar. 
+Tree 
+Tree shall be defined as the area in between headers. 
+Tree shall be fully editable by the user
+Tree shall be able to be split in two when a new header is typed only if the header is created as the last item in a Tree. 
+Page Format
+Title  -P0
+Title shall be a single text entry line at the top of the window. 
+Title shall always be 7% the size of the page.
+Title shall not allow manipulation of size, color, or formatting of text. 
+Copy button shall be on the same line as Title, but confined to the right side of the line.  -P0
+Toolbar shall be under the title line. - P0
+Body shall be under the Toolbar.  - P0
+Body shall be defined as everything below the Toolbar. 
+Body shall be no more than 85% of the page. 
+Body shall always be visible. 
+Body shall be fully editable by the user
+Body shall always have at least 1 Header. 
+Body shall allow for multiple Headers
+Headers with in the body shall be defined as the part of the tree below them until another header is defined.
+Functions 
+Copy button 
+The copy button shall share the same line as Title. - P1
+Copy shall be displayed as COPY - P0
+Copy function shall be available in the program tool bar if running on a standard desktop computer. - P2
+Copy button shall have a black border that is 3 pixels large.  - P2
+Copy button shall add content to clipboard in a particular format and sorting of items that is compatible with pasting into Google docs. - P0
+Sorting of items is defined in 4. Sorting. - P0
+When Copy is pressed, a pastable format as follows shall be copied to the clipboard retaining all formatting and be structured: 
+
+“YYYY-MM-DD - Title
+
+Open Questions
+(all items in this area) 
+
+– 
+Action Items 
+(all items in this area) 
+
+–
+Main Body” 
+Date and Title shall be written as a header in the copy
+The copy should be fully compatible with pasting in google docs. - P0
+Key strokes - P0
+All standard keystrokes to bold, underline, and italics should be implemented. Other standard keystrokes to save or print shall also be included. 
+Typing # (text) then hitting enter shall create a header. 
+Sorting - P0
+When Copy is clicked, items Shall added to the clipboard in the format outlined in 3.a.iii with the following sorting rules:
+Open Questions
+Open Questions shall be written as a header2 in the copy.
+Any item in a tree that contains a question mark shall be considered an Open Question.
+If any items within a Header’s tree contain a question mark, the header shall be copied to the Open Questions area with regular sized font size but in Bold. 
+If Context contains a question mark and has no child, it shall be copied under the its respective header in Open questions.
+If a Main Note contains a question mark, its parent and the main not shall be copied under its respective header, in Open questions.
+If a Sub note contains a question mark, the sub note and its parent should be copied to the open questions area under the respective header.
+If a subsub note contains a question mark, the subsub note and its parent should be copied to the open question area under its respective header.
+Tree hierarchy should always be honored when copying to the Open questions. 
+Action Items
+Action items shall be written as a header2 in the clipboard.
+Any item within a tree that starts with “Action -” or a check box, shall be considered an action item. 
+All action items shall be copied under the Action Items header in the clipboard.
+If any item begins with “Action -”, the text “Action -” shall made a checkbox in the copy. 
+Parents and other items in the tree shall not be copied to action items. 
+Main body
+All Header shall not be deleted from the in the Main body
+All header in the main body shall be added to the copy as header3.
+Any items within a tree that do not contain a question mark shall remain in the main body under its respective header. 
+All open questions and all action items shall be deleted from the main body in the copy. 
