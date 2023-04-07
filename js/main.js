@@ -1,25 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $('#editor').summernote({
-    height: 300,
+    height: 'calc(100vh - 120px)',
   });
-});
-function copyToClipboard(text) {
-  const el = document.createElement("textarea");
-  el.value = text;
-  el.setAttribute("readonly", "");
-  el.style.position = "absolute";
-  el.style.left = "-9999px";
-  document.body.appendChild(el);
-  el.select();
-  const successful = document.execCommand("copy");
-  document.body.removeChild(el);
 
-  if (!successful) {
-    console.error("Failed to copy text");
-  }
-}
-
-document.querySelector("#copy-button").addEventListener("click", () => {
-  const content = $('#editor').summernote('code');
-  copyToClipboard(content);
+  document
+    .getElementById('copy-button')
+    .addEventListener('click', function () {
+      let editorContent = $('#editor').summernote('code');
+      console.log(editorContent);
+      // You can implement the copy functionality here using the 'editorContent' variable
+    });
 });
