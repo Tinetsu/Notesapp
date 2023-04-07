@@ -1,14 +1,3 @@
-const options = {
-  modules: {
-    toolbar: [
-      ["bold", "italic", "underline"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-    ],
-  },
-  theme: "snow",
-};
-
 const openQuestionsEditor = new Quill("#open-questions", options);
 const actionItemsEditor = new Quill("#action-items", options);
 const mainBodyEditor = new Quill("#main-body", options);
@@ -44,8 +33,12 @@ function copyToClipboard(text) {
   el.style.left = "-9999px";
   document.body.appendChild(el);
   el.select();
-  document.execCommand("copy");
+  const successful = document.execCommand("copy");
   document.body.removeChild(el);
+
+  if (!successful) {
+    console.error("Failed to copy text");
+  }
 }
 
 document.querySelector("#copy-button").addEventListener("click", () => {
