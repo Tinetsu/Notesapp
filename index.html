@@ -13,25 +13,19 @@
     <div id="app-container">
         <div id="title-container">
             <input type="text" id="title" placeholder="Title">
-            <button id="copy-button">COPY</button>
+            <button type="button" onclick="alert('Suck It')">COPY</button>
         </div>
-
-        <div id="toolbar-container"></div>
-
-        <div id="open-questions-container" class="editor-container">
-            <h2>Open Questions</h2>
-            <div id="open-questions"></div>
-        </div>
-
-        <div id="action-items-container" class="editor-container">
-            <h2>Action Items</h2>
-            <div id="action-items"></div>
-        </div>
-
-        <div id="main-body-container" class="editor-container">
-            <h2>Main Body</h2>
-            <div id="main-body"></div>
-        </div>
+	<div id="toolbar-container">
+		var quill = new Quill('#editor', {
+			modules: {
+			toolbar: '#toolbar'
+			},
+			theme: 'snow'
+		});
+	</div>
+	<textarea name="main-body" style="Width:80%; height:600px;">
+        
+	</textarea>
     </div>
 
     <script src="main.js"></script>
