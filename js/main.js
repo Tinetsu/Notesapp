@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
   window.copyContent = function () {
     const title = document.getElementById("title").value;
     const date = new Date().toISOString().slice(0, 10);
-    const openQuestions = quillOpenQuestions.root.innerHTML;
-    const actionItems = quillActionItems.root.innerHTML;
-    const mainBody = quillMainBody.root.innerHTML;
+	const openQuestions = quillOpenQuestions.getText();
+	const actionItems = quillActionItems.getText();
+	const mainBody = quillMainBody.getText();
 
     const formattedContent = `
       ${date} - ${title}
