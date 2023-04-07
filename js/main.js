@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  $('#editor').summernote();
+  $('#editor').summernote({
+    height: 300,
+  });
 });
 function copyToClipboard(text) {
   const el = document.createElement("textarea");
