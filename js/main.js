@@ -1,12 +1,6 @@
-let quill = new Quill('#editor', {
-  theme: 'snow'
+$(document).ready(function() {
+  $('#editor').summernote();
 });
-
-function generateFormattedText() {
-  const content = quill.getText();
-  return content;
-}
-
 function copyToClipboard(text) {
   const el = document.createElement("textarea");
   el.value = text;
@@ -24,6 +18,6 @@ function copyToClipboard(text) {
 }
 
 document.querySelector("#copy-button").addEventListener("click", () => {
-  const formattedText = generateFormattedText();
-  copyToClipboard(formattedText);
+  const content = $('#editor').summernote('code');
+  copyToClipboard(content);
 });
