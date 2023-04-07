@@ -13,21 +13,36 @@
     <div id="app-container">
         <div id="title-container">
             <input type="text" id="title" placeholder="Title">
-            <button type="button" onclick="alert('Suck It')">COPY</button>
+            <button id="copy-button">COPY</button>
         </div>
-	<div id="toolbar-container">
-		var quill = new Quill('#editor', {
-			modules: {
-			toolbar: '#toolbar'
-			},
-			theme: 'snow'
-		});
-	</div>
-	<textarea name="main-body" style="Width:80%; height:600px;">
-        
-	</textarea>
-    </div>
 
-    <script src="main.js"></script>
+        <div id="toolbar-container"></div>
+
+        <div id="main-body-container" class="editor-container">
+            <div id="main-body"></div>
+     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        const toolbarOptions = [
+            [{ 'font': [] }, { 'size': [] }],
+			[ 'bold', 'italic', 'underline', 'strike' ],
+			[{ 'color': [] }, { 'background': [] }],
+			[{ 'script': 'super' }, { 'script': 'sub' }],
+			[{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+			[{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+			[ 'direction', { 'align': [] }],
+			[ 'link', 'image', 'video', 'formula' ],
+			[ 'clean' ]
+        ];
+
+        const quill = new Quill('#main-body', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            placeholder: 'Compose your note...',
+            theme: 'snow'
+        });
+    </script>
+	 </div>
+    </div>
 </body>
 </html>
