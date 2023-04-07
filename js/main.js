@@ -1,13 +1,17 @@
 $(document).ready(function () {
-  $('#editor').summernote({
-    height: 'calc(100vh - 120px)',
+  $("#summernote").summernote({
+    minHeight: 200,
   });
 
-  document
-    .getElementById('copy-button')
-    .addEventListener('click', function () {
-      let editorContent = $('#editor').summernote('code');
-      console.log(editorContent);
-      // You can implement the copy functionality here using the 'editorContent' variable
-    });
+  $("#copy-button").click(function () {
+    let content = $("#summernote").summernote("code");
+    navigator.clipboard.writeText(content).then(
+      function () {
+        alert("Content copied to clipboard!");
+      },
+      function (err) {
+        alert("Could not copy content to clipboard");
+      }
+    );
+  });
 });
