@@ -1,5 +1,9 @@
+let quill = new Quill('#editor', {
+  theme: 'snow'
+});
+
 function generateFormattedText() {
-  const content = document.querySelector(".ql-editor").innerHTML;
+  const content = quill.getText();
   return content;
 }
 
