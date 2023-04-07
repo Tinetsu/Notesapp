@@ -1,9 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-  function getQuillHTML(quill) {
-  const tempContainer = document.createElement("div");
-  tempContainer.appendChild(quill.root.cloneNode(true));
-  return tempContainer.innerHTML;
+function copyToClipboard(html) {
+  const el = document.createElement("textarea");
+  el.value = html;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("insertHTML", false, html);
+  document.body.removeChild(el);
 }
+
   const quillOpenQuestions = new Quill("#open-questions", {
     modules: {
       toolbar: "#toolbar-container",
