@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  function getQuillHTML(quill) {
+  const tempContainer = document.createElement("div");
+  tempContainer.appendChild(quill.root.cloneNode(true));
+  return tempContainer.innerHTML;
+}
   const quillOpenQuestions = new Quill("#open-questions", {
     modules: {
       toolbar: "#toolbar-container",
@@ -23,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
   window.copyContent = function () {
     const title = document.getElementById("title").value;
     const date = new Date().toISOString().slice(0, 10);
-	const openQuestions = quillOpenQuestions.getText();
-	const actionItems = quillActionItems.getText();
-	const mainBody = quillMainBody.getText();
+	const openQuestions = getQuillHTML(quillOpenQuestions);
+	const actionItems = getQuillHTML(quillActionItems);
+	const mainBody = getQuillHTML(quillMainBody);
 
     const formattedContent = `
       ${date} - ${title}
