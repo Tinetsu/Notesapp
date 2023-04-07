@@ -1,41 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-function copyToClipboard(html) {
-  const el = document.createElement("textarea");
-  el.value = html;
-  el.setAttribute("readonly", "");
-  el.style.position = "absolute";
-  el.style.left = "-9999px";
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand("insertHTML", false, html);
-  document.body.removeChild(el);
-}
+const options = {
+  modules: {
+    toolbar: [
+      ["bold", "italic", "underline"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+    ],
+  },
+  theme: "snow",
+};
 
-  const quillOpenQuestions = new Quill("#open-questions", {
-    modules: {
-      toolbar: "#toolbar-container",
-    },
-    theme: "snow",
-  });
-
-  const quillActionItems = new Quill("#action-items", {
-    modules: {
-      toolbar: "#toolbar-container",
-    },
-    theme: "snow",
-  });
-
-  const quillMainBody = new Quill("#main-body", {
-    modules: {
-      toolbar: "#toolbar-container",
-    },
-    theme: "snow",
-  });
-
-  window.copyContent = function () {
-    const title = document.getElementById("title").value;
-    const date = new Date().toISOString().slice(0, 10);
-	const openQuestionsEditor = new Quill("#open-questions", options);
+const openQuestionsEditor = new Quill("#open-questions", options);
 const actionItemsEditor = new Quill("#action-items", options);
 const mainBodyEditor = new Quill("#main-body", options);
 
