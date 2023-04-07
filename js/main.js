@@ -35,30 +35,46 @@ function copyToClipboard(html) {
   window.copyContent = function () {
     const title = document.getElementById("title").value;
     const date = new Date().toISOString().slice(0, 10);
-	const openQuestions = getQuillHTML(quillOpenQuestions);
-	const actionItems = getQuillHTML(quillActionItems);
-	const mainBody = getQuillHTML(quillMainBody);
+	const openQuestionsEditor = new Quill("#open-questions", options);
+const actionItemsEditor = new Quill("#action-items", options);
+const mainBodyEditor = new Quill("#main-body", options);
 
-    const formattedContent = `
-      ${date} - ${title}
-      
-      <h2>Open Questions</h2>
-      ${openQuestions}
-      
-      <h2>Action Items</h2>
-      ${actionItems}
-      
-      <h2>Main Body</h2>
-      ${mainBody}
-    `;
+function generateFormattedText() {
+  const title = document.querySelector("#title").value;
+  const openQuestionsContent = openQuestionsEditor.root.innerHTML;
+  const actionItemsContent = actionItemsEditor.root.innerHTML;
+  const mainBodyContent = mainBodyEditor.root.innerHTML;
+  const date = new Date().toISOString().split("T")[0];
 
-    const el = document.createElement("textarea");
-    el.value = formattedContent;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
+  const formattedText = `
+${date} - ${title}
 
-    alert("Content copied to clipboard!");
-  };
+Open Questions
+${openQuestionsContent}
+
+Action Items
+${actionItemsContent}
+
+Main Body
+${mainBodyContent}
+`;
+
+  return formattedText;
+}
+
+function copyToClipboard(text) {
+  const el = document.createElement("textarea");
+  el.value = text;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+}
+
+document.querySelector("#copy-button").addEventListener("click", () => {
+  const formattedText = generateFormattedText();
+  copyToClipboard(formattedText);
 });
