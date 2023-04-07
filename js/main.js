@@ -1,28 +1,6 @@
-const openQuestionsEditor = new Quill("#open-questions", options);
-const actionItemsEditor = new Quill("#action-items", options);
-const mainBodyEditor = new Quill("#main-body", options);
-
 function generateFormattedText() {
-  const title = document.querySelector("#title").value;
-  const openQuestionsContent = openQuestionsEditor.root.innerHTML;
-  const actionItemsContent = actionItemsEditor.root.innerHTML;
-  const mainBodyContent = mainBodyEditor.root.innerHTML;
-  const date = new Date().toISOString().split("T")[0];
-
-  const formattedText = `
-${date} - ${title}
-
-Open Questions
-${openQuestionsContent}
-
-Action Items
-${actionItemsContent}
-
-Main Body
-${mainBodyContent}
-`;
-
-  return formattedText;
+  const content = document.querySelector(".ql-editor").innerHTML;
+  return content;
 }
 
 function copyToClipboard(text) {
